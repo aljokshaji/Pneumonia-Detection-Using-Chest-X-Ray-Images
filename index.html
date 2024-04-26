@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pneumonia Detection</title>
+    <style>
+        body {
+            background-color: hsla(301, 79%, 35%, 0.7); 
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            margin-top: 40px;
+            font-size: 35px;
+        }
+        form {
+            margin-top: 40px;
+            font-size: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="submit"] {
+            margin-top: 10px;
+            padding: 10px 20px;
+            font-size: 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        img {
+            margin-top: 40px;
+            max-width: 500px;
+        }
+        table {
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Pneumonia Detection</h1>
+    <form method="post" action="/predict" enctype="multipart/form-data">
+        <label for="file">Upload an X-ray image:</label>
+        <input type="file" name="file" id="file" accept="image/*">
+        <input type="submit" value="Submit">
+    </form>
+    {% if img_url %}
+    <h2>Predicted Label:</h2>
+    <p>{{ predicted_label }}</p>
+    <img src="{{ img_url }}" alt="Uploaded Image">
+    {% endif %}
+
+</body>
+</html>
